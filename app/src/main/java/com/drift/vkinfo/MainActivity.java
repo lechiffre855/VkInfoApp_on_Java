@@ -25,14 +25,22 @@ public class MainActivity extends AppCompatActivity {
     private TextView result;
     private TextView errorMessage;
     private ProgressBar loadingIndicator;
+    private TextView userNotExistMessage;
 
     private void showResultTextView() {
         result.setVisibility(View.VISIBLE);
         errorMessage.setVisibility(View.INVISIBLE);
+        userNotExistMessage.setVisibility(View.INVISIBLE);
     }
     private void showErrorTextView() {
         result.setVisibility(View.INVISIBLE);
         errorMessage.setVisibility(View.VISIBLE);
+        userNotExistMessage.setVisibility(View.INVISIBLE);
+    }
+    private void showUserNotExist() {
+        result.setVisibility(View.INVISIBLE);
+        errorMessage.setVisibility(View.INVISIBLE);
+        userNotExistMessage.setVisibility(View.VISIBLE);
     }
 
     class VkQueryTask extends AsyncTask<URL, Void, String> {
@@ -72,12 +80,13 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-//                if (firstName != null && lastName != null) {
+                if (firstName != null && lastName != null) {
                     String resultString = ("Имя: " + firstName + "\n" + "Фамилия: " + lastName);
                     result.setText(resultString);
                     showResultTextView();
-//                } else {
-//                    showErrorTextView(); }
+                } else {
+                    showUserNotExist();
+                }
             }
             else {
                 showErrorTextView();
@@ -96,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         result = findViewById(R.id.tv_result);
         errorMessage = findViewById(R.id.tv_error_message);
         loadingIndicator = findViewById(R.id.pb_loading_indicator);
+        userNotExistMessage = findViewById(R.id.tv_userNotExist_message);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override

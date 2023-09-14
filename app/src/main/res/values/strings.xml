@@ -2,6 +2,7 @@
     <string name="app_name">VkInfo</string>
     <string name="ID">Введите ID во Вконтакте</string>
     <string name="search">Search!</string>
-    <string name="result">Результат будет отображен здесь</string>
+    <string name="result">Эту надпись изначально не видно, но ладно: пусть будет что-нибудь…</string>
+    <string name="UserNotExist">Пользователь с данным ID не существует.\n\nПопробуйте ввести другой ID!</string>
     <string name="error_message">Произошла ошибка. Попробуйте позже</string>
 </resources>
